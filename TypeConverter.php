@@ -125,7 +125,7 @@ class TypeConverter {
 	public static function isXml($data) {
 		$xml = @simplexml_load_string($data);
 
-		return ($xml instanceof SimpleXmlElement) ? $xml : false;
+		return ($xml instanceof \SimpleXmlElement) ? $xml : false;
 	}
 
 	/**
@@ -390,8 +390,8 @@ class TypeConverter {
 		foreach ($xml->children() as $element => $node) {
 			$data = array();
 
-			if (!isset($array[$element])) {
-				$array[$element] = "";
+			if (!isset($array[$element])) {				
+				$array[$element] = [];
 			}
 
 			if (!$node->attributes() || $format === self::XML_NONE) {
